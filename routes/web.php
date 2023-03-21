@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 Route::get('/' , [FrontendController::class , 'index']);
 Route::get('category' , [FrontendController::class , 'category']);
 Route::get('view-category/{slug}' , [FrontendController::class , 'viewcategory']);
+Route::get('view-product/{cate_slug}/{pro_slug}' , [FrontendController::class , 'viewproduct']);
   Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

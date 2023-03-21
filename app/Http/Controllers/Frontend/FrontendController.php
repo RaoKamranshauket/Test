@@ -27,4 +27,25 @@ public function category()
         $product=product::where('cate_id',$category->id)->get();
            return view('Frontend.products.index',compact('category','product'));
     }
+    public function viewproduct($cate_slug,$pro_slug)
+    {
+        if(Category::where('slug',$cate_slug)->exists())
+        {
+            if(product::where('slug',$pro_slug)->exists())
+            {
+                $category=Category::where('slug',$cate_slug)->first();
+
+                $product=product::where('slug',$pro_slug)->first();
+                   return view('Frontend.products.view',compact('category','product'));
+            }
+            else
+            {
+        return redirect('/')->with('status','Link is broken');
+            }
+        }
+        else
+        {
+            return redirect('/')->with('status','Slug not found');
+        }
+    }
 }

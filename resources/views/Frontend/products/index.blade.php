@@ -13,6 +13,7 @@ Welcome to Front End
             <div class="row">
                 @foreach ($product as $item)
                 <div class="col-md-3 mb-3">
+                    <a href="{{url('view-product/'.$category->slug.'/'.$item->slug)}}">
                     <div class="card">
                     <img src="{{asset('assests/upload/product/'.$item->image)}}" alt="all ok">
 
@@ -22,6 +23,7 @@ Welcome to Front End
 
                     </div>
                     </div>
+                </a>
                 </div>
                 @endforeach
 
