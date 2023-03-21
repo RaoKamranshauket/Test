@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,9 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+Route::get('/' , [FrontendController::class , 'index']);
+Route::get('category' , [FrontendController::class , 'category']);
+Route::get('view-category/{slug}' , [FrontendController::class , 'viewcategory']);
   Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -35,7 +34,7 @@ Route::middleware(['auth','isAdmin'])->group(function (){
     Route::post('update/{id}' , [CategoryController::class , 'update']);
     Route::get('delete/{id}',[CategoryController::class,'delete']);
 
-    Route::get('Product','Admin\ProductController@index');
+    Route::get('product','Admin\ProductController@index');
     Route::get('Add-Product','Admin\ProductController@add');
     Route::post('insert-product','Admin\ProductController@insert');
     Route::get('update-product/{id}' , [ProductController::class , 'edit']);

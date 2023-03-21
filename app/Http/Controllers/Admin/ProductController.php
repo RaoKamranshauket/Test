@@ -46,7 +46,7 @@ class ProductController extends Controller
         $product->meta_descrip=$req['meta_descrip'];
         $product->meta_keywords=$req['meta_keywords'];
         $product->save();
-        return redirect('Product')->with('status','Data save succesfully');
+        return redirect('product')->with('status','Data save succesfully');
     }
     public function edit($id)
     {
@@ -87,7 +87,7 @@ $product->image=$fileName;
         $product->meta_descrip=$req['meta_descrip'];
         $product->meta_keywords=$req['meta_keywords'];
    $product->update();
-   return redirect('Product')->with('status','Data update succesfully');
+   return redirect('product')->with('status','Data update succesfully');
 
  }
  public function delete($id)
@@ -104,6 +104,6 @@ $product->image=$fileName;
   File::delete($img_path);
   }
   $product->delete();
-  return redirect('Product')->with('status','Data delete succesfully');
+  return redirect('product')->with('status','Data delete succesfully');
  }
 }
