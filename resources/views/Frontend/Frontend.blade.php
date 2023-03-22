@@ -23,6 +23,7 @@
     <style>
         a{
             text-decoration:none !important;
+            color:black !important;
         }
     </style>
 </head>
@@ -32,13 +33,18 @@
      @yield('content')
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" ></script>
 
+
+
+     <script src="{{asset('admin/js/jquery-3.6.4.min.js')}}"></script>
+     <script src="{{asset('admin/js/custom.js')}}"></script>
+
+     <script src="{{asset('admin/js/sweetalert.min.js')}}"></script>
 
      <script src="{{asset('admin/js/bootstrap.bundle.min.js')}}"></script>
      <script src="{{asset('admin/js/owl.carousel.js')}}"></script>
     <script src="{{asset('admin/js/owl.carousel.min.js')}}"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @yield('scripts')
 @if (session('status')) {
     <script >
