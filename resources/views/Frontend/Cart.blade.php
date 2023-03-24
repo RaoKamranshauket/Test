@@ -28,6 +28,7 @@ $total=0;
         </div>
         <div class="col md-2">
             <input type="hidden" value="{{$item->products->id}}" class="cart_id">
+            <input type="hidden" value="{{$item->products->qty}}" class="pro_qty">
             @if ($item->products->qty >= $item->pro_qty)
              <label for="Quantity">Quantity</label>
              <div class="input-group text-center mb-3" style="width:130px" >

@@ -42,6 +42,7 @@
                         <div class="row mt-2">
                             <div class="col md-2 qt">
                                 <input type="hidden" value="{{ $product->id }}" class="pro_id">
+                                <input type="hidden" value="{{$product->qty}}" class="pro_qty">
                                 <label for="Quantity">Quantity</label>
                                 <div class="input-group text-center mb-3" style="width:130px">
                                     <span class="input-group-text decrement-btn">-</span>

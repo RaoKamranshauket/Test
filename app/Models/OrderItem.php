@@ -10,4 +10,10 @@ class OrderItem extends Model
     use HasFactory;
     protected $table="order_items";
     protected $primaryKey="id";
+    protected $fillable=[
+        'order_id',
+  'pro_id',
+  'qty',
+  'price',
+    ];
 }

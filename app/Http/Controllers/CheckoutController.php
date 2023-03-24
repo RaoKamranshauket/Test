@@ -45,6 +45,7 @@ $order->pincode=$req['pincode'];
 $order->tracking_no=$req['fname'].rand(1,10000);
 $order->save();
 
+
 $cart=Cart::where('user_id',Auth::id())->get();
 foreach ($cart as $item) {
 OrderItem::create([
@@ -54,15 +55,16 @@ OrderItem::create([
   'price'=> $item->products->selling_price,
 
 ]);
-}
-if(product::where('id',$cart->products->id)->exists())
+
+if(product::where('id',$item->products->id)->exists())
 {
-    $pro=product::where('id',$cart->products->id)->first();
-$pro->qty=$pro->qty-$cart->pro_qty;
-$pro->update();
+    $pro=product::where('id',$item->products->id)->first();
+$pro->qty=$pro->qty-$item->pro_qty;
+$pro->update();$item->delete();
+
+}
 }
 
-$cart->delete();
 return redirect('/')->with('status','Order Place Successfuly');
 }
 }

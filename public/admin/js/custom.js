@@ -29,12 +29,21 @@ $(document).ready(function () {
         e.preventDefault();
 
         var inc_val = parseInt($(this).closest(".product").find(".qty").val(), 10);
+        var pro_qty = $(this).closest(".product").find(".pro_qty").val();
 
-        inc_val = isNaN(inc_val) ? 0 : inc_val;
-        if (inc_val < 10) {
-            inc_val++;
-            $(this).closest(".product").find(".qty").val(inc_val);
+        if(inc_val < pro_qty)
+        {
+
+            inc_val = isNaN(inc_val) ? 0 : inc_val;
+            if (inc_val < 10) {
+                inc_val++;
+                $(this).closest(".product").find(".qty").val(inc_val);
+            }
         }
+        else
+{
+    swal("Item is only qunity");
+}
     });
     $(".decrement-btn").click(function (e) {
         e.preventDefault();
@@ -74,9 +83,9 @@ $(".qtychange").click(function (e) {
     e.preventDefault();
 
     var pro_id = $(this).closest(".product").find(".cart_id").val();
-    var pro_qty = $(this).closest(".product").find(".qty").val();
+    var cart_qty = $(this).closest(".product").find(".qty").val();
 
-    $.ajaxSetup({
+   { $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
@@ -86,12 +95,14 @@ $(".qtychange").click(function (e) {
         url: '/public/update-cart',
         data: {
             pro_id: pro_id,
-            pro_qty: pro_qty,
+            pro_qty: cart_qty,
         },
         success: function (data) {
             swal(data.status);
           //  window.location.reload();
         },
     });
+}
+
 });
 });
