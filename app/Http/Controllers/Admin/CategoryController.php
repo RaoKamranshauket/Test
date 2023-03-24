@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category=Category::all();
-        return view('admin.category.index',compact('category'));
+        return view('admin.category.Index',compact('category'));
     }
     public function add()
     {

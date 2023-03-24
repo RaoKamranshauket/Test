@@ -1,0 +1,9 @@
+.checkout-form label{
+font-size: 12xp;
+font-weight: 700;
+}
+.checkout-form input{
+    font-size: 14xp;
+    padding: 5px;
+    font-weight: 400;
+    }
