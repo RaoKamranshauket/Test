@@ -14,7 +14,7 @@ $(document).ready(function () {
         });
         $.ajax({
             type: "POST",
-            url: '/public/add-cart',
+            url: '/add-cart',
             data: {
                 pro_id: pro_id,
                 pro_qty: pro_qty,
@@ -67,7 +67,7 @@ $(".rm-btn").click(function (e) {
 
         $.ajax({
         type: "POST",
-        url:'/public/remove-cart',
+        url:'/remove-cart',
         data: {
             cart_id: cart_id,
         },
@@ -92,7 +92,7 @@ $(".qtychange").click(function (e) {
     });
     $.ajax({
         type: "POST",
-        url: '/public/update-cart',
+        url: '/update-cart',
         data: {
             pro_id: pro_id,
             pro_qty: cart_qty,

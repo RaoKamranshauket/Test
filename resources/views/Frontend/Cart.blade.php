@@ -18,6 +18,7 @@ $total=0;
 <div class="container my-5">
     <div class="card shadow product">
         <div class="card-body ">
+            @if ($carts->count() > 0)
             @foreach ($carts as $item)
             <div class="row product">
                 <div class="col-md-2">
@@ -49,13 +50,16 @@ $total+=$item->products->selling_price*$item->pro_qty;
         </div>
 
         @endforeach
+        <div class="card-footer">
+
+        <h6 >Total Price: <b> {{$total}} </b>
+           <a href="{{url('checkout-cart')}}" class=" btn btn-outline-success float-end chk-btn" >Proced to Checkout</a>
+        </h6>
+        @else
+        <h4>Your <i class="fa fa-shopping-cart"></i>Cart is empty</h4>
+        <a href="{{url('category')}}" type="btn" class="btn btn-outline-primary float-end">Continue Shoping</a>
         </div>
-
-<div class="card-footer">
-
-<h6 >Total Price: <b> {{$total}} </b>
-   <a href="{{url('checkout-cart')}}" class=" btn btn-outline-success float-end chk-btn" >Proced to Checkout</a>
-</h6>
+@endif
 </div>
         </div>
         </div>

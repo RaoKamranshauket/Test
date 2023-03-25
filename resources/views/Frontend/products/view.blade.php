@@ -24,7 +24,9 @@
                     <div class="col-md-8">
                         <h2 class="mb-0">
                             {{ $product->name }}
+                            @if ($product->trending == '1')
                             <label style="font-size:16px;" class="float-end badge bg-danger tranding_tag">Trending</label>
+                           @endif
                         </h2>
 
                         <hr>

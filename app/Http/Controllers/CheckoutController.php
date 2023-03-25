@@ -30,6 +30,12 @@ return view('Frontend.CartCheckout',compact('cart'));
 
 public function placeorder(Request $req)
 {
+    $cart_items=Cart::where('user_id',Auth::id())->get();
+      $total_price=0;
+    foreach ($cart_items as $item) {
+          $total_price+=$item->pro_qty*$item->products->selling_price;
+    }
+    printf($total_price);die;
 $order=new Order();
 $order->user_id=Auth::user()->id;
 $order->fname=$req['fname'];
@@ -42,6 +48,7 @@ $order->city=$req['city'];
 $order->state=$req['state'];
 $order->country=$req['country'];
 $order->pincode=$req['pincode'];
+
 $order->tracking_no=$req['fname'].rand(1,10000);
 $order->save();
 

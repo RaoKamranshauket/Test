@@ -73,6 +73,7 @@
         <div class="card-body ">
 <h5>Other Details</h5>
 <hr>
+@if($cart->count() > 0)
 <table class="table table-striped">
 <tbody>
 <tr>
@@ -92,7 +93,9 @@
 <hr>
 
 <button type="submit" class="btn btn-primary float-end" >Place Order</button>
-
+@else
+    <h4 class="text-center">You have no item in the cart.</h4>
+@endif
 </div>
              </div>
     </div>

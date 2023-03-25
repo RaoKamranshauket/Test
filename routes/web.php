@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -34,6 +35,8 @@ Route::get('view-product/{cate_slug}/{pro_slug}' , [FrontendController::class , 
       Route::post('update-cart' , [CartController::class , 'updateProduct']);
       Route::get('checkout-cart' , [CheckoutController::class , 'checkout']);
       Route::post('place-order' , [CheckoutController::class , 'placeorder']);
+      Route::get('my-orders' , [UserController::class , 'index']);
+      Route::get('view-order-details/{id}' , [UserController::class , 'Order_details']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
