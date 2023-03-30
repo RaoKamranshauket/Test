@@ -3,11 +3,14 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ViewOrdersController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\WishListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,7 @@ Route::get('view-product/{cate_slug}/{pro_slug}' , [FrontendController::class , 
 
   Route::post('add-cart' , [CartController::class , 'addProduct']);
   Route::post('remove-cart' , [CartController::class , 'removecart']);
+  Route::post('add-wishlist' , [WishListController::class , 'addWishList']);
 
   Route::middleware(['auth'])->group(function (){
 
@@ -37,6 +41,11 @@ Route::get('view-product/{cate_slug}/{pro_slug}' , [FrontendController::class , 
       Route::post('place-order' , [CheckoutController::class , 'placeorder']);
       Route::get('my-orders' , [UserController::class , 'index']);
       Route::get('view-order-details/{id}' , [UserController::class , 'Order_details']);
+      Route::get('View-PendingOrders' , [ViewOrdersController::class , 'index']);
+      Route::get('view-pendingorder-details/{id}' , [ViewOrdersController::class , 'PendingOrder_details']);
+      Route::post('Update-Status' , [ViewOrdersController::class , 'UpdateStatus']);
+      Route::get('completed-orders' , [ViewOrdersController::class , 'CompletedOrders']);
+      Route::get('View-Users' , [UsersController::class , 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

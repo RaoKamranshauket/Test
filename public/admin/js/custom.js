@@ -24,6 +24,27 @@ $(document).ready(function () {
             },
         });
     });
+    $(".addWishList").click(function (e) {
+        e.preventDefault();
+
+        var pro_id = $(this).closest(".product").find(".pro_id").val();
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            type: "POST",
+            url: '/add-wishlist',
+            data: {
+                pro_id: pro_id,
+            },
+            success: function (data) {
+                swal(data.status);
+            },
+        });
+    });
 
     $(".increment-btn").click(function (e) {
         e.preventDefault();

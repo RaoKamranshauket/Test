@@ -35,7 +35,6 @@ public function placeorder(Request $req)
     foreach ($cart_items as $item) {
           $total_price+=$item->pro_qty*$item->products->selling_price;
     }
-    printf($total_price);die;
 $order=new Order();
 $order->user_id=Auth::user()->id;
 $order->fname=$req['fname'];
@@ -48,6 +47,7 @@ $order->city=$req['city'];
 $order->state=$req['state'];
 $order->country=$req['country'];
 $order->pincode=$req['pincode'];
+$order->total_price=$total_price;
 
 $order->tracking_no=$req['fname'].rand(1,10000);
 $order->save();
@@ -57,7 +57,7 @@ $cart=Cart::where('user_id',Auth::id())->get();
 foreach ($cart as $item) {
 OrderItem::create([
   'order_id'=> $order->id,
-  'pro_id'=> $item->id,
+  'pro_id'=> $item->pro_id,
   'qty'=> $item->pro_qty,
   'price'=> $item->products->selling_price,
 

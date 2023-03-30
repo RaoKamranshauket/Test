@@ -39,6 +39,18 @@
               <p>Add Product</p>
             </a>
           </li>
+          <li class="nav-item {{ Request::is('View-PendingOrders') ? 'active':'' }}">
+            <a class="nav-link" href="{{url('View-PendingOrders')}}">
+              <i class="material-icons">content_paste</i>
+              <p>Orders</p>
+            </a>
+          </li>
+          <li class="nav-item {{ Request::is('View-Users') ? 'active':'' }}">
+            <a class="nav-link" href="{{url('View-Users')}}">
+              <i class="material-icons">person</i>
+              <p>Users</p>
+            </a>
+          </li>
       </ul>
     </div>
   </div>
