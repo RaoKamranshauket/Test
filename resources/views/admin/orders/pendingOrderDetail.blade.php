@@ -1,6 +1,6 @@
 @extends('Frontend.Frontend')
 @section('title')
- View Orders
+ View  Orders
 @endsection
 
 @section('content')
@@ -40,7 +40,7 @@
         <div class="card">
 
             <div class="card-header">
-            <h5>  My  Order </h5>
+            <h5>  Customer  Order </h5>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -53,7 +53,6 @@
                     @foreach ($order->OrderItems as $item)
                         <tr>
                             <td>{{$item->products->name}}</td>
-                            <span class="text-danger">{{$message}}</span>
                             <td>{{$item->qty}}</td>
                             <td>{{$item->price}}</td>
                             <td><img src="{{asset('/assests/upload/product/'.$item->products->image)}}" width="50px" /></td>
@@ -61,6 +60,18 @@
                     @endforeach
                 </table>
                 <h4>Grand total: {{$order->total_price}}</h4>
+            </div>
+            <div class="mt-3">
+                <h4>Order Status</h4>
+                <form action="{{url('Update-Status')}}" method="POST">
+                   @csrf
+                    <input type="hidden" name="id" value="{{$order->id}}">
+                <select class="form-select" name="status" aria-label="Default select example">
+                    <option {{$order->status==0 ? 'Selected':''}}>Pending</option>
+                    <option {{$order->status==1 ? 'Selected':''}}>Completed</option>
+                  </select>
+                <button type="submit" class="btn btn-primary mt-2">Update</button>
+            </form>
             </div>
         </div></div>
     </div>

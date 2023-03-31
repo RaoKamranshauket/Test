@@ -12,6 +12,7 @@ class CartController extends Controller
 {
     public function addProduct(Request $req)
     {
+
         $pro_id = product::where('id', $req['pro_id'])->first();
         if (Auth::check()) {
             if ($pro_id) {
@@ -26,9 +27,11 @@ class CartController extends Controller
                     $cart->save();
                     return response()->json(['status' =>  $pro_id->name . "is added succesfuly"]);
                 }
-            } else
-                return response()->json(['status' =>  "Please login First"]);
+            }
         }
+        else
+           {return response()->json(['status' =>  "Please login First"]);
+   }
     }
     public function viewProduct()
     {
