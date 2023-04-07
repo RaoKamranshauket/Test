@@ -20,7 +20,8 @@ $(document).ready(function () {
                 pro_qty: pro_qty,
             },
             success: function (data) {
-                swal(data.status);
+                swal(data.status,"success");
+                window.location.reload();
             },
         });
     });
@@ -76,6 +77,31 @@ $(document).ready(function () {
             $(this).closest(".product").find(".qty").val(inc_val);
         }
     });
+$(".rmWishList-btn").click(function (e) {
+        e.preventDefault();
+
+        var pro_id = $(this).closest(".product").find(".pro_id").val();
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        $.ajax({
+        type: "POST",
+        url:'/remove-wishList',
+        data: {
+            pro_id: pro_id,
+        },
+        success: function (data) {
+        // window.location.reload();
+            swal("",data.status,"success");
+            setTimeout(function() {
+                window.location.reload();
+              }, 1000);
+        },
+    });
+});
 $(".rm-btn").click(function (e) {
         e.preventDefault();
 

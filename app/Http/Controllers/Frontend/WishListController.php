@@ -12,7 +12,9 @@ class WishListController extends Controller
 {
     public function index()
     {
-        return view('Frontend.wishlist.index');
+        $wishList=WishList::where('user_id',Auth::id())->get();
+
+        return view('Frontend.wishlist.index',compact('wishList'));
     }
     public function addWishList(Request $req)
     {
@@ -36,4 +38,20 @@ class WishListController extends Controller
            {return response()->json(['status' =>  "Please login First"]);
    }
     }
-}
+    public function removewishList(Request $req)
+    {
+
+        $cart=WishList::where('pro_id',$req['pro_id'])->where('user_id',Auth::id())->first();
+
+         if (WishList::where('pro_id',$req['pro_id'])->where('user_id',Auth::id())->exists()) {
+
+            $cart->delete();
+               return response()->json(['status' =>  "Product delete from the cart"]);
+         }
+         else
+         {
+            return response()->json(['status' =>  "Item not exist"]);
+         }
+    }
+
+    }

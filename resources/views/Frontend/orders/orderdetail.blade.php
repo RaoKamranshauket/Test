@@ -53,7 +53,7 @@
                     @foreach ($order->OrderItems as $item)
                         <tr>
                             <td>{{$item->products->name}}</td>
-                            <span class="text-danger">{{$message}}</span>
+
                             <td>{{$item->qty}}</td>
                             <td>{{$item->price}}</td>
                             <td><img src="{{asset('/assests/upload/product/'.$item->products->image)}}" width="50px" /></td>

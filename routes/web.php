@@ -31,6 +31,7 @@ Route::get('view-product/{cate_slug}/{pro_slug}' , [FrontendController::class , 
 
   Route::post('add-cart' , [CartController::class , 'addProduct']);
   Route::post('remove-cart' , [CartController::class , 'removecart']);
+  Route::post('remove-wishList' , [WishListController::class , 'removewishList']);
   Route::post('add-wishlist' , [WishListController::class , 'addWishList']);
 
   Route::middleware(['auth'])->group(function (){
@@ -46,6 +47,7 @@ Route::get('view-product/{cate_slug}/{pro_slug}' , [FrontendController::class , 
       Route::post('Update-Status' , [ViewOrdersController::class , 'UpdateStatus']);
       Route::get('completed-orders' , [ViewOrdersController::class , 'CompletedOrders']);
       Route::get('View-Users' , [UsersController::class , 'index']);
+      Route::get('view-wishlist' , [WishListController::class , 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
