@@ -17,16 +17,25 @@ class CartController extends Controller
         if (Auth::check()) {
             if ($pro_id) {
                 $id = Auth::id();
-
+              if(Cart::where('pro_id', $req['pro_id'])->where('user_id',Auth::id())->exists())
+              {
+                if(WishList::where('pro_id', $req['pro_id'])->exists())
+                {  $listRemove = WishList::where('pro_id', $req['pro_id'])->first();
+                  $listRemove->delete();
+                 }
+                return response()->json(['status' =>  $pro_id->name . "is already added"]);
+              }
+              else{
                     $cart = new Cart();
                     $cart->user_id = $id;
                     $cart->pro_id = $req['pro_id'];
                     $cart->pro_qty = $req['pro_qty'];
                     $cart->save();
-                    $listRemove = WishList::where('pro_id', $req['pro_id'])->first();
+                    if(WishList::where('pro_id', $req['pro_id'])->exists())
+                  {  $listRemove = WishList::where('pro_id', $req['pro_id'])->first();
                     $listRemove->delete();
-                    return response()->json(['status' =>  $pro_id->name . "is added succesfuly"]);
-
+                   } return response()->json(['status' =>  $pro_id->name . "is added succesfuly"]);
+                }
                 }
 
         }
@@ -37,7 +46,6 @@ class CartController extends Controller
     public function viewProduct()
     {
         $carts=Cart::where('user_id',Auth::id())->get();
-
         return view('Frontend.Cart',compact('carts'));
     }
 

@@ -74,4 +74,54 @@ $pro->update();$item->delete();
 
 return redirect('/')->with('status','Order Place Successfuly');
 }
+
+
+    public function razorpay(Request $request)
+    {
+    $cart=Cart::where('user_id',Auth::id())->get();
+$total_amount=0;
+    foreach ($cart as $item) {
+        $total_amount+=$item->products->selling_price*$item->pro_qty;
+    }
+    $fname   = $request->input('fname');
+    $email   = $request->input('email');
+    $phone   = $request->input('phone');
+    $lname    = $request->input('lname');
+    $address2  = $request->input('address2');
+    $city     =  $request->input('city ');
+    $state    = $request->input('state');
+    $county   = $request->input('count');
+    $pincode   =$request->input('pincode');
+    $address1   = $request->input('address1');
+
+        //     'fname' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required',
+        //    'lname' => 'required',
+        //  'address2' => 'required',
+        //     'city' => 'required',
+        //     'state' =>  'required',
+        //  'country' =>  'required',
+        //   'pincode' =>  'required',
+        //   'address1' => 'required',
+        // ]);
+
+
+
+        return response()->json([
+        'fname' =>$fname,
+        'email' =>$email,
+        'phone' =>$phone,
+       'lname'  =>$lname,
+      'address2'=>$address2,
+        'city' =>$city,
+        'state' =>$state,
+      'country' =>$county,
+      'pincode' =>$pincode,
+      'address1'=>$address1,
+      'total_amount' => $total_amount,
+      ]);
+    }
+
+
 }

@@ -14,7 +14,7 @@ $(document).ready(function () {
         });
         $.ajax({
             type: "POST",
-            url: '/add-cart',
+            url:"/New-Pro/public/add-cart",
             data: {
                 pro_id: pro_id,
                 pro_qty: pro_qty,
@@ -23,6 +23,11 @@ $(document).ready(function () {
                 swal(data.status,"success");
                 window.location.reload();
             },
+            error: function(xhr, status, error) {
+                console.log("Error occurred: " + error);
+    console.log("Status: " + status);
+    console.log("XHR object: " + xhr);
+              }
         });
     });
     $(".addWishList").click(function (e) {
@@ -37,7 +42,7 @@ $(document).ready(function () {
         });
         $.ajax({
             type: "POST",
-            url: '/add-wishlist',
+            url: '/New-Pro/public/add-wishlist',
             data: {
                 pro_id: pro_id,
             },
@@ -89,7 +94,7 @@ $(".rmWishList-btn").click(function (e) {
 
         $.ajax({
         type: "POST",
-        url:'/remove-wishList',
+        url:'remove-wishList',
         data: {
             pro_id: pro_id,
         },
@@ -114,7 +119,7 @@ $(".rm-btn").click(function (e) {
 
         $.ajax({
         type: "POST",
-        url:'/remove-cart',
+        url:'remove-cart',
         data: {
             cart_id: cart_id,
         },
@@ -139,7 +144,7 @@ $(".qtychange").click(function (e) {
     });
     $.ajax({
         type: "POST",
-        url: '/update-cart',
+        url: 'update-cart',
         data: {
             pro_id: pro_id,
             pro_qty: cart_qty,

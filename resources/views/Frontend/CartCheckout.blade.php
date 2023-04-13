@@ -1,5 +1,4 @@
-
-@extends('Frontend.Frontend')
+        @extends('Frontend.Frontend')
 @section('title')
  Cart
 @endsection
@@ -26,43 +25,66 @@
 <div class="row checkout-form">
 <div class="col-md-6">
 <label for="">First Name</label>
-<input type="text" name="fname" class="form-control" placeholder="Enter First Name" >
+<input type="text" name="fname" class="form-control fname"  placeholder="Enter First Name">
+    <span class="text-danger" id="fname-error"></span>
 </div>
 <div class="col-md-6">
 <label for="">Last Name</label>
-<input type="text" name="lname" class="form-control" placeholder="Enter Last Name" >
+<input type="text" name="lname" class="form-control lname" placeholder="Enter Last Name" >
+
+    <span class="text-danger" id="lname-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">Email</label>
-<input type="text" name="email" class="form-control" placeholder="Enter Email Address" >
+<input type="text" name="email" class="form-control email " placeholder="Enter Email Address" >
+
+    <span class="text-danger" id="email-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">Phone Number</label>
-<input type="text" name="phone" class="form-control" placeholder="Enter  Phone Number " >
+<input type="text" name="phone" class="form-control phone " placeholder="Enter  Phone Number " >
+
+    <span class="text-danger" id="phone-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">Address 1</label>
-<input type="text" name="address1" class="form-control" placeholder="Enter Address 1 " >
+<input type="text" name="address1" class="form-control address1 " placeholder="Enter Address 1 " >
+    <span class="text-danger" id="address1-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">Address 2</label>
-<input type="text" name="address2" class="form-control" placeholder="Enter Address  2 " >
+<input type="text" name="address2" class="form-control address2 " placeholder="Enter Address  2 " >
+
+    <span class="text-danger" id="address2-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">City</label>
-<input type="text" name="city" class="form-control" placeholder="Enter CIty Name" >
+<input type="text" name="city" class="form-control city " placeholder="Enter CIty Name" >
+    <span class="text-danger" id="city-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">State</label>
-<input type="text" name="state" class="form-control" placeholder="Enter State Name" >
+<input type="text" name="state" class="form-control state   " placeholder="Enter State Name" >
+
+    <span class="text-danger" id="state-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">Country</label>
-<input type="text" name="country" class="form-control" placeholder="Enter Country Name" >
+<input type="text" name="country" class="form-control country" placeholder="Enter Country Name" >
+    <span class="text-danger" id="country-error"></span>
+
 </div>
 <div class="col-md-6 mt-3">
 <label for="">PinCode</label>
-<input type="text" name="pincode" class="form-control" placeholder="Enter Pincode " >
+<input type="text" name="pincode" class="form-control pincode" placeholder="Enter Pincode " >
+    <span class="text-danger" id="pincode-error"></span>
 </div>
 </div>
              </div>
@@ -92,7 +114,8 @@
 </table>
 <hr>
 
-<button type="submit" class="btn btn-primary float-end" >Place Order</button>
+<button type="submit" class="btn btn-success w-100 " >Place Order| COD</button>
+<button type="button" class="btn btn-primary w-100 razorBtn mt-3" >Pay With Razorpay</button>
 @else
     <h4 class="text-center">You have no item in the cart.</h4>
 @endif

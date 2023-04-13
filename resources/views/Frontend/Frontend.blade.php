@@ -39,6 +39,7 @@
 
      <script src="{{asset('admin/js/jquery-3.6.4.min.js')}}"></script>
      <script src="{{asset('admin/js/custom.js')}}"></script>
+     <script src="{{asset('admin/js/checkout.js')}}"></script>
 
      <script src="{{asset('admin/js/sweetalert.min.js')}}"></script>
 

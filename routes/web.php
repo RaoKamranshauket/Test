@@ -40,6 +40,7 @@ Route::get('view-product/{cate_slug}/{pro_slug}' , [FrontendController::class , 
       Route::post('update-cart' , [CartController::class , 'updateProduct']);
       Route::get('checkout-cart' , [CheckoutController::class , 'checkout']);
       Route::post('place-order' , [CheckoutController::class , 'placeorder']);
+      Route::post('razor-pay' , [CheckoutController::class , 'razorpay']);
       Route::get('my-orders' , [UserController::class , 'index']);
       Route::get('view-order-details/{id}' , [UserController::class , 'Order_details']);
       Route::get('View-PendingOrders' , [ViewOrdersController::class , 'index']);
